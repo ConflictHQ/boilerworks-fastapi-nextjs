@@ -18,11 +18,13 @@ services:
         condition: service_healthy
 
   ui:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
     ports:
       - "3001:3000"
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:8003
+      NEXT_PUBLIC_API_ROOT: http://localhost:8003
     volumes:
       - ./frontend:/app
       - /app/node_modules
