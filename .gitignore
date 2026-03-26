@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.sqlite3
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+*.log
+.DS_Store
+node_modules/
+.next/
+assets/
+frontend/node_modules/
+frontend/.next/
