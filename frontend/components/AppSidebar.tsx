@@ -91,24 +91,8 @@ export function AppSidebar({ ssrUser, ...props }: AppSidebarProps) {
       url: "/form",
       icon: <ClipboardListIcon />,
     },
-    {
-      title: "Form Engine",
-      url: "/forms",
-      icon: <ClipboardListIcon />,
-      items: [
-        { title: "All Forms", url: "/forms" },
-        { title: "Create New", url: "/forms/new" },
-      ],
-    },
-    {
-      title: "Workflows",
-      url: "/workflows",
-      icon: <ZapIcon />,
-      items: [
-        { title: "All Workflows", url: "/workflows" },
-        { title: "New Workflow", url: "/workflows/new" },
-      ],
-    },
+
+
     {
       title: t("hooks"),
       url: "/hooks",
