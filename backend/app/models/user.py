@@ -42,9 +42,7 @@ class Session(Base):
     def create_token(cls, user_id: uuid.UUID, days: int = 30) -> tuple["Session", str]:
         raw_token = secrets.token_urlsafe(32)
         token_hash = hashlib.sha256(raw_token.encode()).hexdigest()
-        session = cls(
-            user_id=user_id, token_hash=token_hash, expires_at=datetime.now(datetime.UTC) + timedelta(days=days)
-        )
+        session = cls(user_id=user_id, token_hash=token_hash, expires_at=datetime.utcnow() + timedelta(days=days))
         return session, raw_token
 
     @classmethod

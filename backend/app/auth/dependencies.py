@@ -18,7 +18,7 @@ async def get_current_user(
 
     token_hash = Session.hash_token(session_token)
     result = await db.execute(
-        select(Session).where(Session.token_hash == token_hash, Session.expires_at > datetime.now(datetime.UTC))
+        select(Session).where(Session.token_hash == token_hash, Session.expires_at > datetime.utcnow())
     )
     session = result.scalar_one_or_none()
     if not session:

@@ -1,14 +1,17 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
+import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8003"}/api/:path*`,
-      },
-    ];
-  },
-};
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
-export default nextConfig;
+const nextConfig: NextConfig = {};
+
+export default withSentryConfig(withNextIntl(nextConfig), {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  sourcemaps: { disable: true },
+  disableLogger: true,
+  automaticVercelMonitors: true,
+});
