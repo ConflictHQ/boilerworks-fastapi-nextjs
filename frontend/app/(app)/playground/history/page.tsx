@@ -39,7 +39,7 @@ const sessions = [
   },
   {
     date: "2026-02-20",
-    prompt: "Draft a product launch announcement email for our new API",
+    prompt: "Draft a item launch announcement email for our new API",
     model: "Genesis",
     tokens: 623,
     status: "completed",
@@ -67,7 +67,7 @@ const sessions = [
   },
   {
     date: "2026-02-17",
-    prompt: "List 10 creative names for a SaaS analytics product",
+    prompt: "List 10 creative names for a SaaS analytics item",
     model: "Genesis",
     tokens: 156,
     status: "completed",

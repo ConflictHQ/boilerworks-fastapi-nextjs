@@ -7,8 +7,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 from .base import AuditBase, SoftDeleteMixin
 
 
-class Product(AuditBase, SoftDeleteMixin):
-    __tablename__ = "products"
+class Item(AuditBase, SoftDeleteMixin):
+    __tablename__ = "items"
 
     name: Mapped[str] = mapped_column(String(255))
     slug: Mapped[str] = mapped_column(String(255), unique=True, index=True)

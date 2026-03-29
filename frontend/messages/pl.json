@@ -43,7 +43,7 @@
       "revenue": "Przychód całkowity",
       "orders": "Zamówienia",
       "customers": "Klienci",
-      "products": "Produkty",
+      "items": "Produkty",
       "fromLastMonth": "w porównaniu z poprzednim miesiącem"
     },
     "revenue": {

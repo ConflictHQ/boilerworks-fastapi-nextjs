@@ -12,10 +12,10 @@ Primary conventions document. All agent shims point here.
 | Auth | Session-based (httpOnly cookies, SHA256 hashing), login/logout/me endpoints |
 | Permissions | User, Group, Permission, UserGroup models; `require_permission()` dependency |
 | API | REST endpoints returning `ApiResponse` (`{ok, data, errors}`) |
-| Frontend | Next.js 15 with login, dashboard, products list |
+| Frontend | Next.js 15 with login, dashboard, items list |
 | Infra | Docker Compose: api, ui, postgres, redis |
 | CI | GitHub Actions: lint + tests |
-| Example | Products CRUD (create, list, get, update, soft-delete) |
+| Example | Items CRUD (create, list, get, update, soft-delete) |
 
 ---
 
@@ -26,8 +26,8 @@ Primary conventions document. All agent shims point here.
 ```python
 from app.models.base import AuditBase, SoftDeleteMixin
 
-class Product(AuditBase, SoftDeleteMixin):
-    __tablename__ = "products"
+class Item(AuditBase, SoftDeleteMixin):
+    __tablename__ = "items"
     name: Mapped[str] = mapped_column(String(255))
 ```
 
@@ -39,7 +39,7 @@ All endpoints return: `{"ok": true, "data": {...}, "errors": null}`
 
 ### Auth
 
-Session cookie auth. Every endpoint uses `Depends(require_auth)`. Permissions via `Depends(require_permission("product.view"))`.
+Session cookie auth. Every endpoint uses `Depends(require_auth)`. Permissions via `Depends(require_permission("item.view"))`.
 
 ### Tests
 

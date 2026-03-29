@@ -16,7 +16,7 @@ class UserType:
 
 
 @strawberry.type
-class ProductType:
+class ItemType:
     id: strawberry.ID
     name: str
     slug: str
@@ -28,9 +28,9 @@ class ProductType:
 
 
 @strawberry.type
-class ProductEdge:
+class ItemEdge:
     cursor: str
-    node: ProductType
+    node: ItemType
 
 
 @strawberry.type
@@ -39,8 +39,8 @@ class PageInfo:
 
 
 @strawberry.type
-class ProductConnection:
-    edges: list[ProductEdge]
+class ItemConnection:
+    edges: list[ItemEdge]
     total_count: int
     page_info: PageInfo
 

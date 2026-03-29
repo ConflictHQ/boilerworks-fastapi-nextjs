@@ -63,7 +63,7 @@ async def viewer_user(db: AsyncSession) -> User:
     await db.commit()
     await db.refresh(group)
 
-    perm = Permission(group_id=group.id, codename="product.view")
+    perm = Permission(group_id=group.id, codename="item.view")
     db.add(perm)
     ug = UserGroup(user_id=user.id, group_id=group.id)
     db.add(ug)

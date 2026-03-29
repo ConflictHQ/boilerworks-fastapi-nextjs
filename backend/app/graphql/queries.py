@@ -4,9 +4,9 @@ from strawberry.types import Info
 from .types import (
     ComponentType,
     PageInfo,
-    ProductConnection,
-    ProductEdge,
-    ProductType,
+    ItemConnection,
+    ItemEdge,
+    ItemType,
     UserProfile,
     UserType,
 )
@@ -26,37 +26,37 @@ class Query:
         )
 
     @strawberry.field
-    async def products(
+    async def items(
         self,
         info: Info,
         first: int = 25,
         offset: int = 0,
         search: str = "",
-    ) -> ProductConnection:
+    ) -> ItemConnection:
         user = info.context["user"]
         if not user:
             raise PermissionError("Authentication required")
 
         from sqlalchemy import func, select
 
-        from app.models.product import Product
+        from app.models.item import Item
 
         db = info.context["db"]
-        stmt = select(Product).where(Product.active())
+        stmt = select(Item).where(Item.active())
         if search:
-            stmt = stmt.where(Product.name.ilike(f"%{search}%"))
+            stmt = stmt.where(Item.name.ilike(f"%{search}%"))
 
         count_stmt = select(func.count()).select_from(stmt.subquery())
         total = (await db.execute(count_stmt)).scalar() or 0
 
-        stmt = stmt.order_by(Product.created_at.desc()).offset(offset).limit(first)
+        stmt = stmt.order_by(Item.created_at.desc()).offset(offset).limit(first)
         result = await db.execute(stmt)
-        products = result.scalars().all()
+        items = result.scalars().all()
 
         edges = [
-            ProductEdge(
+            ItemEdge(
                 cursor=str(i + offset),
-                node=ProductType(
+                node=ItemType(
                     id=strawberry.ID(str(p.id)),
                     name=p.name,
                     slug=p.slug,
@@ -67,10 +67,10 @@ class Query:
                     created_at=p.created_at.isoformat(),
                 ),
             )
-            for i, p in enumerate(products)
+            for i, p in enumerate(items)
         ]
 
-        return ProductConnection(
+        return ItemConnection(
             edges=edges,
             total_count=total,
             page_info=PageInfo(has_next_page=(offset + first) < total),

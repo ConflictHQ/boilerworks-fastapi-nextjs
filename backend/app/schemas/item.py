@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class ProductCreate(BaseModel):
+class ItemCreate(BaseModel):
     name: str
     description: str = ""
     price: str
@@ -9,7 +9,7 @@ class ProductCreate(BaseModel):
     is_active: bool = True
 
 
-class ProductUpdate(BaseModel):
+class ItemUpdate(BaseModel):
     name: str | None = None
     description: str | None = None
     price: str | None = None
@@ -17,7 +17,7 @@ class ProductUpdate(BaseModel):
     is_active: bool | None = None
 
 
-class ProductOut(BaseModel):
+class ItemOut(BaseModel):
     id: str
     name: str
     slug: str
@@ -30,14 +30,14 @@ class ProductOut(BaseModel):
     model_config = {"from_attributes": True}
 
     @classmethod
-    def from_model(cls, product) -> "ProductOut":
+    def from_model(cls, item) -> "ItemOut":
         return cls(
-            id=str(product.id),
-            name=product.name,
-            slug=product.slug,
-            description=product.description,
-            price=str(product.price),
-            sku=product.sku,
-            is_active=product.is_active,
-            created_at=product.created_at.isoformat(),
+            id=str(item.id),
+            name=item.name,
+            slug=item.slug,
+            description=item.description,
+            price=str(item.price),
+            sku=item.sku,
+            is_active=item.is_active,
+            created_at=item.created_at.isoformat(),
         )

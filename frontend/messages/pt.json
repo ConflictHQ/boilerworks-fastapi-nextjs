@@ -43,7 +43,7 @@
       "revenue": "Receita total",
       "orders": "Pedidos",
       "customers": "Clientes",
-      "products": "Produtos",
+      "items": "Produtos",
       "fromLastMonth": "em relação ao mês passado"
     },
     "revenue": {

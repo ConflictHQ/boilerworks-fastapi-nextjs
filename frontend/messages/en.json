@@ -43,7 +43,7 @@
       "revenue": "Total revenue",
       "orders": "Orders",
       "customers": "Customers",
-      "products": "Products",
+      "items": "Items",
       "fromLastMonth": "from last month"
     },
     "revenue": {
@@ -61,7 +61,7 @@
     },
     "sales": {
       "title": "Sales by category",
-      "description": "Units sold per product category this quarter",
+      "description": "Units sold per item category this quarter",
       "label": "Units sold",
       "electronics": "Electronics",
       "clothing": "Clothing",

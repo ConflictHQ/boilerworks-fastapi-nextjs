@@ -43,7 +43,7 @@
       "revenue": "Chiffre d'affaires total",
       "orders": "Commandes",
       "customers": "Clients",
-      "products": "Produits",
+      "items": "Produits",
       "fromLastMonth": "par rapport au mois dernier"
     },
     "revenue": {

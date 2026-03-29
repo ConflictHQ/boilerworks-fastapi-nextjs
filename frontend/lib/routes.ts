@@ -1,6 +1,6 @@
 export const routeLabels: Record<string, string> = {
   dashboard: "Dashboard",
-  table: "Products",
+  table: "Items",
   form: "User management",
   settings: "Settings",
   general: "General",

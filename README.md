@@ -49,11 +49,11 @@ open http://localhost:3000
 | POST | `/api/auth/login` | No | Login (returns session cookie) |
 | POST | `/api/auth/logout` | Yes | Logout |
 | GET | `/api/auth/me` | No | Current user |
-| GET | `/api/products` | Yes | List products |
-| POST | `/api/products` | Yes | Create product |
-| GET | `/api/products/{slug}` | Yes | Get product |
-| PUT | `/api/products/{slug}` | Yes | Update product |
-| DELETE | `/api/products/{slug}` | Yes | Soft-delete product |
+| GET | `/api/items` | Yes | List items |
+| POST | `/api/items` | Yes | Create item |
+| GET | `/api/items/{slug}` | Yes | Get item |
+| PUT | `/api/items/{slug}` | Yes | Update item |
+| DELETE | `/api/items/{slug}` | Yes | Soft-delete item |
 
 ## Conventions
 

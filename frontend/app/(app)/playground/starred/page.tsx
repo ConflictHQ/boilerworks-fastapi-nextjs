@@ -20,7 +20,7 @@ const starred = [
   {
     title: "Email drafter",
     prompt:
-      "Draft a professional email to announce a new product feature. Tone should be enthusiastic but concise. Include a call to action.",
+      "Draft a professional email to announce a new item feature. Tone should be enthusiastic but concise. Include a call to action.",
     model: "Genesis",
     date: "2026-02-15",
   },

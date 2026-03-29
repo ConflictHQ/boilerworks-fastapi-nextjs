@@ -43,7 +43,7 @@
       "revenue": "Ingresos totales",
       "orders": "Pedidos",
       "customers": "Clientes",
-      "products": "Productos",
+      "items": "Itemos",
       "fromLastMonth": "respecto al mes anterior"
     },
     "revenue": {
@@ -61,7 +61,7 @@
     },
     "sales": {
       "title": "Ventas por categoría",
-      "description": "Unidades vendidas por categoría de producto este trimestre",
+      "description": "Unidades vendidas por categoría de itemo este trimestre",
       "label": "Unidades vendidas",
       "electronics": "Electrónica",
       "clothing": "Ropa",

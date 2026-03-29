@@ -7,9 +7,9 @@ export default function TablePage() {
   return (
     <div className="flex flex-1 flex-col gap-6 p-6">
       <div>
-        <h1 className="text-xl font-semibold">Products</h1>
+        <h1 className="text-xl font-semibold">Items</h1>
         <p className="text-muted-foreground mt-1 text-sm">
-          Browse and manage your product inventory.
+          Browse and manage your item inventory.
         </p>
       </div>
       <Separator />

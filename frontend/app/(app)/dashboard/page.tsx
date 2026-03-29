@@ -12,7 +12,7 @@ export default async function DashboardPage() {
     { label: t("stats.revenue"), value: "$48,295", change: "+12.5%", icon: TrendingUpIcon },
     { label: t("stats.orders"), value: "1,284", change: "+8.2%", icon: ShoppingCartIcon },
     { label: t("stats.customers"), value: "3,912", change: "+4.1%", icon: UsersIcon },
-    { label: t("stats.products"), value: "248", change: "+2", icon: PackageIcon },
+    { label: t("stats.items"), value: "248", change: "+2", icon: PackageIcon },
   ];
 
   return (

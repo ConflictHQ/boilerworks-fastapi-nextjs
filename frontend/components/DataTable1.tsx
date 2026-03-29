@@ -17,11 +17,11 @@ export const schema = z.object({
   availability: z.array(z.enum(["In store", "Online"])),
 });
 
-type Product = z.infer<typeof schema>;
+type Item = z.infer<typeof schema>;
 
 // ─── data ─────────────────────────────────────────────────────────────────────
 
-const data: Product[] = schema.array().parse([
+const data: Item[] = schema.array().parse([
   {
     id: "prod-001",
     item: "Tablet Case",
@@ -206,7 +206,7 @@ const data: Product[] = schema.array().parse([
 
 // ─── columns ──────────────────────────────────────────────────────────────────
 
-const columns: ColumnDef<Product, unknown>[] = [
+const columns: ColumnDef<Item, unknown>[] = [
   {
     accessorKey: "sku",
     header: ({ column }) => <DataTableColumnHeader column={column} title="SKU" />,

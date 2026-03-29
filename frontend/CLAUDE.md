@@ -556,7 +556,7 @@ export const GET_THING = gql`
 - Code style is enforced by Prettier — do not hand-tune formatting it controls
 - Hooks use **arrow functions**: `export const useMe = () => { ... }`
 - Query/mutation constants: `SCREAMING_SNAKE_CASE` (`GET_ME`, `UPDATE_PROFILE`)
-- Paginated list query constants: `camelCase` (`getEmployees`, `getProducts`) — used with `usePaginatedQuery`
+- Paginated list query constants: `camelCase` (`getEmployees`, `getItems`) — used with `usePaginatedQuery`
 - Fragment names: `PascalCase` + `Fields` suffix (`ThingFields`)
 - All `useQuery` calls must have explicit type params: `useQuery<Data, Variables>(...)`
 - `fetchPolicy` must be set explicitly in every hook — no implicit defaults

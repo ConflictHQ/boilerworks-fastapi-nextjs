@@ -57,7 +57,7 @@ def upgrade() -> None:
     )
     op.create_index(op.f("ix_permissions_codename"), "permissions", ["codename"], unique=False)
     op.create_table(
-        "products",
+        "items",
         sa.Column("name", sa.String(length=255), nullable=False),
         sa.Column("slug", sa.String(length=255), nullable=False),
         sa.Column("description", sa.String(), nullable=True),
@@ -76,7 +76,7 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint("sku"),
     )
-    op.create_index(op.f("ix_products_slug"), "products", ["slug"], unique=True)
+    op.create_index(op.f("ix_items_slug"), "items", ["slug"], unique=True)
     op.create_table(
         "sessions",
         sa.Column("id", sa.UUID(), nullable=False),
@@ -114,8 +114,8 @@ def downgrade() -> None:
     op.drop_table("user_groups")
     op.drop_index(op.f("ix_sessions_token_hash"), table_name="sessions")
     op.drop_table("sessions")
-    op.drop_index(op.f("ix_products_slug"), table_name="products")
-    op.drop_table("products")
+    op.drop_index(op.f("ix_items_slug"), table_name="items")
+    op.drop_table("items")
     op.drop_index(op.f("ix_permissions_codename"), table_name="permissions")
     op.drop_table("permissions")
     op.drop_index(op.f("ix_users_username"), table_name="users")

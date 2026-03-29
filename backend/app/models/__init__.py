@@ -1,5 +1,5 @@
 from .base import AuditBase, Base, SoftDeleteMixin
-from .product import Product
+from .item import Item
 from .user import Group, Permission, Session, User, UserGroup
 
 __all__ = [
@@ -11,5 +11,5 @@ __all__ = [
     "Group",
     "Permission",
     "UserGroup",
-    "Product",
+    "Item",
 ]

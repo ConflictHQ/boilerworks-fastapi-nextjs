@@ -43,7 +43,7 @@
       "revenue": "Fatturato totale",
       "orders": "Ordini",
       "customers": "Clienti",
-      "products": "Prodotti",
+      "items": "Prodotti",
       "fromLastMonth": "rispetto al mese scorso"
     },
     "revenue": {

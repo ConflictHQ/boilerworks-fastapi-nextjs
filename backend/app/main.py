@@ -4,7 +4,7 @@ from strawberry.fastapi import GraphQLRouter
 
 from .api.auth import router as auth_router
 from .api.health import router as health_router
-from .api.products import router as products_router
+from .api.items import router as items_router
 from .config import settings
 from .graphql.context import get_context
 from .graphql.schema import schema
@@ -28,4 +28,4 @@ app.include_router(auth_router, prefix="/app/auth1")
 
 # REST API (still available alongside GraphQL)
 app.include_router(health_router)
-app.include_router(products_router, prefix="/api")
+app.include_router(items_router, prefix="/api")

@@ -43,7 +43,7 @@
       "revenue": "Gesamtumsatz",
       "orders": "Bestellungen",
       "customers": "Kunden",
-      "products": "Produkte",
+      "items": "Produkte",
       "fromLastMonth": "gegenüber dem Vormonat"
     },
     "revenue": {
