@@ -58,3 +58,7 @@ open http://localhost:3001
 ## Conventions
 
 See [`bootstrap.md`](bootstrap.md) for full conventions.
+
+---
+
+Boilerworks is a [Conflict](https://weareconflict.com) brand. CONFLICT is a registered trademark of Conflict LLC.
