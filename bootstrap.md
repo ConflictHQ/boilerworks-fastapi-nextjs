@@ -51,9 +51,9 @@ pytest-asyncio + httpx `AsyncClient` against real Postgres. Both auth and permis
 
 | Service | URL |
 |---|---|
-| API | http://localhost:8003 |
-| Frontend | http://localhost:3001 |
-| OpenAPI Docs | http://localhost:8003/docs |
-| Health | http://localhost:8003/health |
-| Postgres | localhost:5436 |
-| Redis | localhost:6383 |
+| API | http://localhost:8000 |
+| Frontend | http://localhost:3000 |
+| OpenAPI Docs | http://localhost:8000/docs |
+| Health | http://localhost:8000/health |
+| Postgres | localhost:5432 |
+| Redis | localhost:6379 |

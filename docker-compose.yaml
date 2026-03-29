@@ -3,12 +3,12 @@ services:
     build: ./backend
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     ports:
-      - "8003:8000"
+      - "8000:8000"
     environment:
       APP_DATABASE_URL: postgresql+asyncpg://dbadmin:Password123@postgres:5432/boilerworks
       APP_REDIS_URL: redis://redis:6379/1
       APP_DEBUG: "true"
-      APP_CORS_ORIGINS: '["http://localhost:3001"]'
+      APP_CORS_ORIGINS: '["http://localhost:3000"]'
     volumes:
       - ./backend:/app
     depends_on:
@@ -22,9 +22,9 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.dev
     ports:
-      - "3001:3000"
+      - "3000:3000"
     environment:
-      NEXT_PUBLIC_API_ROOT: http://localhost:8003
+      NEXT_PUBLIC_API_ROOT: http://localhost:8000
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -34,7 +34,7 @@ services:
   postgres:
     image: postgres:16-alpine
     ports:
-      - "5436:5432"
+      - "5432:5432"
     environment:
       POSTGRES_DB: boilerworks
       POSTGRES_USER: dbadmin
@@ -50,7 +50,7 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6383:6379"
+      - "6379:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -60,8 +60,8 @@ services:
   mailpit:
     image: axllent/mailpit
     ports:
-      - "8026:8025"
-      - "1026:1025"
+      - "8025:8025"
+      - "1025:1025"
     profiles:
       - full
 

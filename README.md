@@ -38,7 +38,7 @@ asyncio.run(seed())
 "
 
 # Open the frontend
-open http://localhost:3001
+open http://localhost:3000
 ```
 
 ## API Endpoints

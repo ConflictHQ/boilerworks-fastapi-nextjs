@@ -24,8 +24,11 @@ compose() {
 case "${1:-help}" in
     up|start)
         compose up -d --build
+        echo "Waiting for services..."
+        sleep 5
+        compose exec -T api alembic upgrade head 2>&1 | tail -3
         echo ""
-        echo "Services starting. Check status with: ./run.sh status"
+        echo "Services running. Check status with: ./run.sh status"
         ;;
     down|stop)
         compose down
@@ -41,6 +44,7 @@ case "${1:-help}" in
         compose logs -f "${2:-}"
         ;;
     seed)
+        compose exec -T api alembic upgrade head
         compose exec api python -m app.seed
         ;;
     test)
