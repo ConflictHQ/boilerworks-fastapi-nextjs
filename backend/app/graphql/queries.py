@@ -3,10 +3,10 @@ from strawberry.types import Info
 
 from .types import (
     ComponentType,
-    PageInfo,
     ItemConnection,
     ItemEdge,
     ItemType,
+    PageInfo,
     UserProfile,
     UserType,
 )
