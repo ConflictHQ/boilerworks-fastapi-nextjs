@@ -47,6 +47,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: cd backend && pip install -e ".[dev]" && pip install python-slugify
+      - run: cd backend && pip install hatchling && pip install --no-build-isolation -e ".[dev]" && pip install python-slugify
       - run: cd backend && PYTHONPATH=. alembic upgrade head
       - run: cd backend && PYTHONPATH=. python -m pytest app/tests/ --cov=app --cov-report=term-missing --cov-fail-under=80 -v
