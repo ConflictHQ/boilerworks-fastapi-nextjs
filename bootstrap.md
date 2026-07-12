@@ -11,8 +11,8 @@ Primary conventions document. All agent shims point here.
 | Backend | FastAPI + SQLAlchemy 2.0 async, Alembic migrations |
 | Auth | Session-based (httpOnly cookies, SHA256 hashing), login/logout/me endpoints |
 | Permissions | User, Group, Permission, UserGroup models; `require_permission()` dependency |
-| API | REST endpoints returning `ApiResponse` (`{ok, data, errors}`) |
-| Frontend | Next.js 15 with login, dashboard, items list |
+| API | GraphQL (Strawberry, `backend/app/graphql/`, served at `/app/gql/config`) + REST endpoints returning `ApiResponse` (`{ok, data, errors}`) |
+| Frontend | Next.js 16 with Apollo Client — login, dashboard, and demo pages (playground, models, documentation, table, form, hooks, secured, settings) |
 | Infra | Docker Compose: api, ui, postgres, redis |
 | CI | GitHub Actions: lint + tests |
 | Example | Items CRUD (create, list, get, update, soft-delete) |
@@ -53,6 +53,7 @@ pytest-asyncio + httpx `AsyncClient` against real Postgres. Both auth and permis
 |---|---|
 | API | http://localhost:8000 |
 | Frontend | http://localhost:3000 |
+| GraphQL | http://localhost:8000/app/gql/config |
 | OpenAPI Docs | http://localhost:8000/docs |
 | Health | http://localhost:8000/health |
 | Postgres | localhost:5432 |

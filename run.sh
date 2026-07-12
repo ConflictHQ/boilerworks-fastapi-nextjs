@@ -43,10 +43,6 @@ case "${1:-help}" in
     logs)
         compose logs -f "${2:-}"
         ;;
-    seed)
-        compose exec -T api alembic upgrade head
-        compose exec api python -m app.seed
-        ;;
     test)
         compose exec api pytest
         ;;
@@ -68,7 +64,6 @@ case "${1:-help}" in
         echo "  restart       Restart all services"
         echo "  status, ps    Show service status"
         echo "  logs [svc]    Tail logs (optionally for one service)"
-        echo "  seed          Seed the database"
         echo "  test          Run tests"
         echo "  lint          Run linters"
         echo "  shell         Open a shell in the API container"

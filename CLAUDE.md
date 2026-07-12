@@ -7,8 +7,8 @@ Read it before writing any code.
 ## Stack
 
 - **Backend**: FastAPI (Python 3.12+), SQLAlchemy 2.0 async, Alembic
-- **Frontend**: Next.js 15 (App Router, TypeScript)
-- **API**: REST (JSON, OpenAPI at /docs)
+- **Frontend**: Next.js 16 (App Router, TypeScript, Apollo Client)
+- **API**: GraphQL (Strawberry at `/app/gql/config`) + REST (JSON, OpenAPI at /docs)
 - **Auth**: Session-based (httpOnly cookies, SHA256 token hashing)
 - **Permissions**: Group-based, checked via FastAPI `Depends()`
 - **Database**: PostgreSQL 16 (via asyncpg)
@@ -16,7 +16,7 @@ Read it before writing any code.
 
 ## Claude-specific notes
 
-- All endpoints return `ApiResponse` format: `{ok, data, errors}`.
+- All REST endpoints return `ApiResponse` format: `{ok, data, errors}`.
 - Never expose integer PKs — use UUID `id` from `AuditBase`.
 - Auth check via `Depends(require_auth)` on every endpoint.
 - Permission checks via `Depends(require_permission("scope"))`.

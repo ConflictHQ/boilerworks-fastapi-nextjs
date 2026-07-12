@@ -1,13 +1,14 @@
 # Boilerworks FastAPI + Next.js
 
-Async-first Python API with SQLAlchemy 2.0 and a Next.js frontend. Session-based auth, group-based permissions, REST API with OpenAPI docs.
+Async-first Python API with SQLAlchemy 2.0 and a Next.js frontend. Session-based auth, group-based permissions, GraphQL (Strawberry) consumed by Apollo Client, plus a REST API with OpenAPI docs.
 
 ## Stack
 
 | Layer | Technology |
 |-------|-----------|
 | Backend | FastAPI (Python 3.12+) |
-| Frontend | Next.js 15 (TypeScript) |
+| Frontend | Next.js 16 (TypeScript, Apollo Client) |
+| API | GraphQL (Strawberry) + REST |
 | ORM | SQLAlchemy 2.0 async |
 | Migrations | Alembic |
 | Auth | Session-based (httpOnly cookies) |
@@ -46,9 +47,11 @@ open http://localhost:3000
 | Method | Path | Auth | Description |
 |--------|------|------|-------------|
 | GET | `/health` | No | Health check |
-| POST | `/api/auth/login` | No | Login (returns session cookie) |
-| POST | `/api/auth/logout` | Yes | Logout |
-| GET | `/api/auth/me` | No | Current user |
+| POST | `/app/gql/config` | Varies | GraphQL endpoint (Strawberry; used by the frontend via Apollo) |
+| POST | `/app/auth1/login` | No | Login (returns session cookie) |
+| POST | `/app/auth1/logout` | Yes | Logout |
+| GET | `/app/auth1/me` | No | Current user |
+| POST | `/app/auth1/session` | No | Token exchange (returns `Authorization` token for the frontend) |
 | GET | `/api/items` | Yes | List items |
 | POST | `/api/items` | Yes | Create item |
 | GET | `/api/items/{slug}` | Yes | Get item |

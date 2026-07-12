@@ -4,7 +4,7 @@
 
 - Next.js 16 (App Router) + TypeScript
 - Apollo Client 4 + `@apollo/client-integration-nextjs`
-- Django session auth (via `auth1` backend) + backend JWT in `httpOnly` cookie
+- Session auth (via the FastAPI `auth1` router) + backend token in `httpOnly` cookie
 - Tailwind CSS + shadcn/ui
 - Prettier + `prettier-plugin-tailwindcss` (formatting + Tailwind class sorting)
 
