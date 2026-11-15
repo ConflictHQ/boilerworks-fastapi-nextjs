@@ -1,0 +1,75 @@
+# The app on Astrolift: `astro app register` reads this file, and the managed
+# workflow builds and deploys on every push to main.
+#
+# Rename before the first deploy: `name`, `[app].slug`, `display_name`,
+# `repo` and the managed service name (a generated app replaces
+# "boilerworks-app" everywhere). Astrolift builds one image per app, so the
+# Next.js web app is its own app (frontend/astrolift.toml), as is the
+# Storybook (storybook/astrolift.toml).
+#
+# One workload, the backend image (backend/Dockerfile):
+#   api  FastAPI (GraphQL at /app/gql/config, REST, session auth); its
+#        command runs the Alembic migrations, then serves on 8000
+# It binds to Postgres. The binding injects DATABASE_URL and the
+# POSTGRES_* parts, but the app reads APP_-prefixed settings and needs the
+# asyncpg driver in the URL, so create the URL as an app secret from the
+# binding's values (postgresql+asyncpg://<user>:<password>@<host>:<port>/<db>),
+# with the secret key and the web app's origin for CORS:
+#   astro app secrets create APP_DATABASE_URL --stdin
+#   astro app secrets create APP_SECRET_KEY --stdin
+#   astro app secrets create APP_CORS_ORIGINS --stdin   # '["https://<web host>"]'
+#
+# The template reads APP_REDIS_URL but nothing uses Redis yet; add a
+# [[managed_services]] redis block bound to "api" (and set APP_REDIS_URL
+# from its REDIS_URL) when something does.
+
+astrolift_version = 1
+name = "boilerworks-app"
+
+[app]
+slug = "boilerworks-app"
+display_name = "Boilerworks"
+runtime = "python"
+repo = "ConflictHQ/boilerworks-fastapi-nextjs"
+
+[environments.production]
+
+[[workloads]]
+name = "api"
+kind = "deployment"
+is_public = true
+replicas = 1
+cpu_request = "250m"
+cpu_limit = "1"
+memory_request = "256Mi"
+memory_limit = "512Mi"
+
+  [[workloads.containers]]
+  name = "api"
+  is_primary = true
+  dockerfile_path = "backend/Dockerfile"
+  build_context = "backend"
+  port = 8000
+  command = ["sh", "-c", "alembic upgrade head && exec uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+
+    [workloads.containers.env]
+    # Alembic's env.py imports the app package from the working directory.
+    PYTHONPATH = "/app"
+
+    [workloads.containers.healthcheck]
+    kind = "http"
+    value = "/health"
+    port = 8000
+
+[[managed_services]]
+kind = "postgres"
+name = "boilerworks-app-db"
+owner_scope = "app"
+environment = "production"
+bind_workloads = ["api"]
+size = "small"
+deletion_policy = "retain"
+
+  [managed_services.config]
+  engine_version = "17"
+  backup_retention_days = 7

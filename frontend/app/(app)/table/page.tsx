@@ -1,17 +1,13 @@
+import { PageHeader } from "@calliopelabs/ui";
 import { Suspense } from "react";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/ui-app/primitives/separator";
 import { DataTable1 } from "@/components/DataTable1";
-import { DataTableEmployees } from "@/components/DataTableEmployees";
+import { DataTableItems } from "@/components/DataTableItems";
 
 export default function TablePage() {
   return (
     <div className="flex flex-1 flex-col gap-6 p-6">
-      <div>
-        <h1 className="text-xl font-semibold">Items</h1>
-        <p className="text-muted-foreground mt-1 text-sm">
-          Browse and manage your item inventory.
-        </p>
-      </div>
+      <PageHeader title="Items" description="Browse and manage your item inventory." />
       <Separator />
       <DataTable1 />
       <Separator />
@@ -22,7 +18,7 @@ export default function TablePage() {
         </p>
       </div>
       <Suspense>
-        <DataTableEmployees />
+        <DataTableItems />
       </Suspense>
     </div>
   );

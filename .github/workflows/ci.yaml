@@ -18,6 +18,30 @@ jobs:
       - run: cd backend && ruff check .
       - run: cd backend && ruff format --check .
 
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    env:
+      NEXT_PUBLIC_API_ROOT: http://localhost:8000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # jsdom's undici needs Node 22+; 24 matches the Storybook image and @calliopelabs/ui.
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run typecheck
+      # Every story rendered with the a11y checks, and story coverage for ui-app/.
+      - run: npm test
+      - run: npm run build
+      - run: npm run build-storybook
+
   test:
     runs-on: ubuntu-latest
     services:

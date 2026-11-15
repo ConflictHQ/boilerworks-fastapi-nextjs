@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/ui-app/primitives/badge";
 import LoginButton from "@/components/LoginButton";
 import LogoutButton from "@/components/LogoutButton";
 import { useMe } from "@/graphql/user/user.hooks";
@@ -16,7 +16,7 @@ export default function AuthStatus() {
     <div className="flex items-center gap-3">
       {user ? (
         <>
-          <Badge variant="default">{user.profile?.username ?? user.email}</Badge>
+          <Badge variant="default">{user.profile?.username ?? user.profile?.email}</Badge>
           <LogoutButton />
         </>
       ) : (
