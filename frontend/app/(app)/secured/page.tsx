@@ -1,8 +1,7 @@
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/ui-app/primitives/separator";
 import { SecuredClientSection } from "./secured-client-section";
 
 export default async function SecuredPage() {
-
   return (
     <div className="flex flex-1 flex-col gap-6 p-6">
       <div>

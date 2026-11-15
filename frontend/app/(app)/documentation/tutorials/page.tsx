@@ -1,6 +1,13 @@
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { PageHeader } from "@calliopelabs/ui";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/ui-app/primitives/card";
+import { Badge } from "@/ui-app/primitives/badge";
 import { ClockIcon, ArrowRightIcon } from "lucide-react";
 import { tutorials } from "./data";
 
@@ -10,17 +17,15 @@ const levelVariant = (level: string): "default" | "secondary" | "outline" =>
 export default function TutorialsPage() {
   return (
     <div className="flex flex-1 flex-col gap-6 p-6">
-      <div>
-        <h1 className="text-2xl font-semibold">Tutorials</h1>
-        <p className="text-muted-foreground mt-2 text-sm">
-          Step-by-step guides to help you build with the platform.
-        </p>
-      </div>
+      <PageHeader
+        title="Tutorials"
+        description="Step-by-step guides to help you build with the platform."
+      />
 
       <div className="grid gap-4 sm:grid-cols-2">
         {tutorials.map((t) => (
           <Link key={t.slug} href={`/documentation/tutorials/${t.slug}`} className="group">
-            <Card className="flex h-full flex-col transition-colors group-hover:border-foreground/20">
+            <Card className="group-hover:border-foreground/20 flex h-full flex-col transition-colors">
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between gap-2">
                   <Badge variant={levelVariant(t.level)}>{t.level}</Badge>
