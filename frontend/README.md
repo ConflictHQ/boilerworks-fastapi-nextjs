@@ -34,8 +34,6 @@ Then fill in the values in `.env`:
 | `AUTH0_DOMAIN`           | Auth0 tenant domain (e.g. `your-tenant.us.auth0.com`)                                |
 | `AUTH0_CLIENT_ID`        | Auth0 application client ID                                                          |
 | `AUTH0_CLIENT_SECRET`    | Auth0 application client secret                                                      |
-| `METABASE_SITE_URL`      | _(optional)_ Metabase instance URL                                                   |
-| `METABASE_SECRET_KEY`    | _(optional)_ Metabase embedding secret key                                           |
 | `SENTRY_AUTH_TOKEN`      | _(optional)_ Sentry auth token for source map uploads                                |
 | `NEXT_PUBLIC_SENTRY_DSN` | _(optional)_ Sentry DSN                                                              |
 
