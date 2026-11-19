@@ -16,7 +16,7 @@ dependencies = [
     "python-slugify>=8.0",
     "python-multipart>=0.0.18",
     "httpx>=0.28",
-    "strawberry-graphql[fastapi]>=0.250",
+    "strawberry-graphql[fastapi]>=0.320.4",
 ]
 
 [project.optional-dependencies]
