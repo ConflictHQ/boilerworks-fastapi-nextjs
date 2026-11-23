@@ -14,7 +14,7 @@ dependencies = [
     "redis>=5.0",
     "bcrypt>=4.2",
     "python-slugify>=8.0",
-    "python-multipart>=0.0.18",
+    "python-multipart>=0.0.26",
     "httpx>=0.28",
     "strawberry-graphql[fastapi]>=0.250",
 ]
